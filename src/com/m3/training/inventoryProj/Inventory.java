@@ -65,6 +65,6 @@ public class Inventory {
 	public static void main(String args[]) throws Exception {
 		Date date = new Date(0);
 		Inventory.InsetItem(10, "Hello", 10,date);
-
+		
 	}
 }

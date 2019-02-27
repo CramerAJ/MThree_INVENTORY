@@ -10,6 +10,11 @@ class InventoryTests {
 //	public void createTestObject() {
 //		
 //	}
+	
+	@Test
+	void randomTest() {
+		System.out.println("UPDATE AJ08_INVENTORY VALUES SET QUANTITIES = QUANTITIES + " + 5 + " WHERE ID = " + 5);
+	}
 
 	@Test
 	void getConnectionTest() {

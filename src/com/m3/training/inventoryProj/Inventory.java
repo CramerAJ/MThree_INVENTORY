@@ -15,16 +15,16 @@ import java.sql.SQLException;
 public class Inventory {
 
 	private List<ItemWrapper> inventory = new ArrayList<>();
-	
+
 	public static Connection getOracleConnection() throws IOException {
 		File path = new File("config.properties");
 		FileInputStream propFile = new FileInputStream(path.getPath());
 		Properties prop = new Properties();
 		prop.load(propFile);
-		String driver = prop.getProperty("driverLnDev");
-		String url = prop.getProperty("urlLnDev");
-		String username = prop.getProperty("usernameLnDev");
-		String password = prop.getProperty("passwordLnDev");
+		String driver = prop.getProperty("driverLocal");
+		String url = prop.getProperty("urlLocal");
+		String username = prop.getProperty("usernameLocal");
+		String password = prop.getProperty("passwordLocal");
 		Connection conn = null;
 		try {
 			Class.forName(driver); // load Oracle driver
@@ -32,39 +32,70 @@ public class Inventory {
 
 		} catch (SQLException | ClassNotFoundException e) {
 			// bye throw something, with e nested inside that new exception
-			System.out.println("We threw an exception " + e);
+			System.out.println("We threw the exception " + e);
 		}
 		return conn;
 	}
 
-	public static void InsetItem(int itemID, String itemName, int itemQuantity, Date itemDate) throws IOException {
-		int newItemID = itemID;
+	public static void InsetItem(String itemName, int itemQuantity) throws IOException {
+		int newItemID = 0;
 		String newItemName = itemName;
 		int newItemQuantity = itemQuantity;
-		Date newItemDate = itemDate;
 		try {
-			Connection conn = getOracleConnection();	
+			Connection conn = getOracleConnection();
 			Statement stmt = conn.createStatement();
-			stmt.executeQuery(
-					"INSERT INTO AJ08_INVENTORY VALUES (" + newItemID + "," 
-                    + newItemName + "," + newItemQuantity + ","+ newItemDate+ ","+ newItemDate +")");
-			
-		} catch (SQLException e ) {
+			stmt.executeQuery("INSERT INTO AJ08_INVENTORY(ID,ITEM_NAME,QUANTITIES) VALUES (" + newItemID + "," + "'"
+					+ newItemName + "'" + "," + newItemQuantity + ")");
+
+		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
-	public static void DeleteItem(int itemID, String itemName, int itemQuantity) throws IOException {
+
+	// Delete Methods
+	///////////////////////////////////////
+	///////////////////////////////////////
+	public static void DeleteItemID(int itemID) throws IOException {
 		int deleteItemID = itemID;
-		String deleteItemName = itemName;
-		int deleteItemQuantity = itemQuantity;
-		
+		try {
+			Connection conn = getOracleConnection();
+			Statement stmt = conn.createStatement();
+			Statement checkItem = conn.createStatement();
+
+			try {
+				checkItem.executeQuery("SELECT ID FROM AJ08_INVENTORY WHERE ID =" + deleteItemID + ")");
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			stmt.executeQuery("DELETE FROM AJ08_INVENTORY WHERE ID =" + deleteItemID + ")");
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public static void DeleteItemNAME(int itemName) throws IOException {
+		int deleteItemName = itemName;
+		try {
+			Connection conn = getOracleConnection();
+			Statement stmt = conn.createStatement();
+			// Do we want to both check if the item exists, also do we want to add a
+			// confirmation
+			stmt.executeQuery("DELETE FROM AJ08_INVENTORY WHERE ITEM_NAME =" + "'" + deleteItemName + "'" + ")");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public static void main(String args[]) throws Exception {
-		Date date = new Date(0);
-		Inventory.InsetItem(10, "Hello", 10,date);
+		Inventory.InsetItem("Ball", 10);
 
 	}
+
 }

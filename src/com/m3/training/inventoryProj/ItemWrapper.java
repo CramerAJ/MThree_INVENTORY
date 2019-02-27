@@ -7,7 +7,12 @@ public class ItemWrapper {
 	private int itemID;
 	private String itemName;
 	private int itemQuantity;
-	private Date date;
+	
+	public ItemWrapper(int itemID, String itemName, int itemQuantity) {
+		this.itemID = itemID;
+		this.itemName = itemName;
+		this.itemQuantity = itemQuantity;
+	}
 	
 	public int getItemID() {
 		return itemID;
@@ -26,12 +31,6 @@ public class ItemWrapper {
 	}
 	public void setItemQuantity(int itemQuantity) {
 		this.itemQuantity = itemQuantity;
-	}
-	public Date getDate() {
-		return date;
-	}
-	public void setDate(Date date) {
-		this.date = date;
 	}
 
 

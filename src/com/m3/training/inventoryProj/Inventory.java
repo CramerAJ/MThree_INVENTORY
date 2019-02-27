@@ -37,6 +37,28 @@ public class Inventory {
 		}
 		return conn;
 	}
+	
+	public static ItemWrapper getItem(String itemName) throws IOException {
+        try {
+            Connection conn = getOracleConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet resultItem = stmt.executeQuery("SELECT * FROM AJ08_INVENTORY WHERE ITEM_NAME=" + itemName);
+            if (resultItem.next()) {
+                int id = resultItem.getInt("ID");
+                String name = resultItem.getString("ITEM_NAME");
+                int quantities = resultItem.getInt("QUANTITIES");
+                
+//                System.out.println(id);
+//                System.out.println(name);
+//                System.out.println(quantities);
+                return new ItemWrapper(id, name, quantities);
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return null;
+    }
 
 	public static void InsetItem(int itemID, String itemName, int itemQuantity) throws IOException {
 		int newItemID = itemID;
@@ -61,30 +83,31 @@ public class Inventory {
 		
 	}
 	
-	public static void subtractItemInventory(int itemID, int itemQuantity) throws IOException {
-		try {
-			Connection conn = getOracleConnection();
-			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM AJ08_INVENTORY WHERE ID = " + itemID);
-			System.out.println("SELECT * FROM AJ08_INVENTORY WHERE ID = " + itemID);
-//				while(rs.next()) {
-//					int id = rs.getInt("ID");
-//					String itemName = rs.getString("ITEM_NAME");
-//					int quantities = rs.getInt("QUANTITIES");
+	public static void subtractItemInventory(String itemName, int itemQuantity) throws IOException {
+		ItemWrapper item = getItem(itemName);
+		
+		
+//		try {
+//			Connection conn = getOracleConnection();
+//			Statement stmt = conn.createStatement();
+//			ResultSet rs = stmt.executeQuery("SELECT * FROM AJ08_INVENTORY WHERE ID = " + itemName);
+////				while(rs.next()) {
+////					int id = rs.getInt("ID");
+////					String itemName = rs.getString("ITEM_NAME");
+////					int quantities = rs.getInt("QUANTITIES");
+////					ItemWrapper iw = new ItemWrapper(id, itemName, quantities);
+////					System.out.println(iw.getItemID()+iw.getItemName()+iw.getItemQuantity());
 //				}
-				System.out.println(id);
-//			ItemWrapper iw = new ItemWrapper();
-//			iw.setItemID(id);
-//			iw.setItemName(itemName);
-//			iw.setItemQuantity(quantities);
-//			System.out.println(iw.getItemName());
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
+//			
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		} finally {
+//			
+//		}
+//	}
 
 	public static void main(String args[]) throws Exception {
 //		Inventory.InsetItem(1, "'Baseball'", 10);
-		Inventory.subtractItemInventory(1, 5);
+		Inventory.subtractItemInventory("'Baseball'", 5);
 	}
 }

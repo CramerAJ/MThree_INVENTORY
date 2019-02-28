@@ -2,18 +2,29 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="test"/>
+	<classpathentry kind="src" path="resources"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
-	<classpathentry kind="lib" path="C:/Users/alumniJohnson04/Desktop/OJDBC-Full/ojdbc6.jar"/>
-	<classpathentry kind="lib" path="C:/Users/alumniJohnson04/Desktop/OJDBC-Full/ojdbc7.jar"/>
-	<classpathentry kind="lib" path="C:/Users/alumniJohnson04/Desktop/OJDBC-Full/ons.jar"/>
-	<classpathentry kind="lib" path="C:/Users/alumniJohnson04/Desktop/OJDBC-Full/orai18n.jar"/>
-	<classpathentry kind="lib" path="C:/Users/alumniJohnson04/Desktop/OJDBC-Full/simplefan.jar"/>
-	<classpathentry kind="lib" path="C:/Users/alumniJohnson04/Desktop/OJDBC-Full/ucp.jar"/>
-	<classpathentry kind="lib" path="C:/Users/alumniJohnson04/Desktop/OJDBC-Full/xdb6.jar"/>
+	<classpathentry kind="lib" path="lib/ojdbc6.jar"/>
+	<classpathentry kind="lib" path="lib/ojdbc7.jar"/>
+	<classpathentry kind="lib" path="lib/ons.jar"/>
+	<classpathentry kind="lib" path="lib/orai18n.jar"/>
+	<classpathentry kind="lib" path="lib/simplefan.jar"/>
+	<classpathentry kind="lib" path="lib/ucp.jar"/>
+	<classpathentry kind="lib" path="lib/xdb6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/alumniJohnson08/eclipse-workspace/InventoryProject/lib/log4j-api-2.11.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/alumniJohnson08/eclipse-workspace/InventoryProject/lib/log4j-api-2.11.2-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/alumniJohnson08/eclipse-workspace/InventoryProject/lib/log4j-api-2.11.2-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/alumniJohnson08/eclipse-workspace/InventoryProject/lib/log4j-core-2.11.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/alumniJohnson08/eclipse-workspace/InventoryProject/lib/log4j-core-2.11.2-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/alumniJohnson08/eclipse-workspace/InventoryProject/lib/log4j-core-2.11.2-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/alumniJohnson08/eclipse-workspace/InventoryProject/lib/log4j-core-2.11.2-tests.jar"/>
+	<classpathentry kind="lib" path="C:/Users/alumniJohnson08/eclipse-workspace/InventoryProject/lib/log4j-jdbc-dbcp2-2.11.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/alumniJohnson08/eclipse-workspace/InventoryProject/lib/log4j-jdbc-dbcp2-2.11.2-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/alumniJohnson08/eclipse-workspace/InventoryProject/lib/log4j-jdbc-dbcp2-2.11.2-sources.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

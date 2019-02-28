@@ -32,6 +32,5 @@ public class ItemWrapper {
 	public void setItemQuantity(int itemQuantity) {
 		this.itemQuantity = itemQuantity;
 	}
-
-
+	
 }
